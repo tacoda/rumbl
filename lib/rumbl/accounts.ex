@@ -6,6 +6,16 @@ defmodule Rumbl.Accounts do
 	alias Rumbl.Repo
 	alias Rumbl.Accounts.User
 
+	def create_user(attrs \\ %{}) do
+		%User{}
+		|> User.changeset(attrs)
+		|> Repo.insert()
+	end
+
+	def change_user(%User{} = user) do
+		User.changeset(user, %{})
+	end
+
 	def list_users do
 		Repo.all(User)
 	end
